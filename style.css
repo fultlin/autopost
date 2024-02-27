@@ -1,0 +1,63 @@
+body {
+  background-color: #242323;
+}
+
+.hello-module {
+  background-color: bisque;
+  max-width: 1200px;
+  text-align: center;
+  padding: 50px;
+  margin: 20vh auto;
+  border-radius: 50px;
+  font-size: 48px;
+}
+
+.next {
+  font-size: 36px;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: aquamarine;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+form {
+  background-color: bisque;
+  max-width: 1200px;
+  text-align: center;
+  padding: 50px;
+  margin: 20vh auto;
+  border-radius: 50px;
+  font-size: 48px;
+}
+
+.send {
+  font-size: 36px;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: aquamarine;
+  cursor: pointer;
+}
+
+.back {
+  font-size: 36px;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: aquamarine;
+  cursor: pointer;
+}

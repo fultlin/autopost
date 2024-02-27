@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hello-module visually-hidden">
+        <p>Для продолжения нажмите кнопку продолжить.</p>
+        <button class="next">Продолжить</button>
+    </div>
+
+    <form action="index.php" method="post">
+
+        <div>
+            <label for="name"> Выберите социальную сеть </label>
+            <select name="socset" id="socset">
+                <option value="vk">VK</option>
+                <option value="tg">TG</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="token"> Введите токен </label>
+            <input type="text" name="token" id="token">
+        </div>
+
+        <div>
+            <label for="content"> Введите текст </label>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        </div>
+
+
+        <button id="back" class="back">Назад</button>
+        <button type="submit" class="send">Send</button>
+    </form>
+
+    <a href="index.php">Get_headers</a>
+</body>
+
+</html>
