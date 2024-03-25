@@ -1,24 +1,34 @@
-import telebot
+from telebot import TeleBot
 import json
-import vk_api
+import os
 
 with open('data.json') as f:
     templates = json.load(f)
 
-socset = templates.get('socset')
-token = templates.get('token')
 content = templates.get('content')
+channel = templates.get('tg-channel')
 
-def post_on_wall(message, owner_id, access_token):
-    vk_session = vk_api.VkApi(token=access_token)
-    vk = vk_session.get_api()
-    vk.wall.post(owner_id=owner_id, message=content)
+token = '7137779818:AAFTAK4lt2wT8tCv-jHuq5twCy91yLw6N6Q'
 
-post_on_wall(content, owner_id=219654837, access_token='vk1.a.R66uenWLlwwj4MSt1s5Bshn-FHtz3JCP2a7Q0HzkLRtBwafLRdPDFu78pgdfIEH3eo1nwbprQ0SpJoK9gArUg28juYUEWiYAmJrUY8YbnogR_kU8SQqMpzwVAsuH42WNFF6qYoFpaVYfK-m7rMZjNsy4rsKe1Ydr-dwxQCeOIIbfx5L0VT1y3bSv8kYuC90QpEkZG5kH0BmY0zNpohHThA')
+bot = TeleBot(token=token)
 
-# chat_id = '987609477'
-# bot = telebot.TeleBot(token)
+uploads_dir = 'uploads'
+files = os.listdir(uploads_dir)
+if (files):
+    files.sort(key=lambda x: os.path.getmtime(os.path.join(uploads_dir, x)), reverse=True)
+    latest_file = files[0]
 
-# @bot.message_handler(commands=['send'])
-# def send_post():
-#     bot.send_photo(chat_id, content)
+    photo_path = os.path.join(uploads_dir, latest_file)
+    photo = open(photo_path, 'rb')
+    photo_message = bot.send_photo(channel, photo, caption=content)
+    photo.close()
+
+    bot.send_message(channel, content, photo_message)
+    for filename in os.listdir('uploads'):
+        file_path = os.path.join('uploads', filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+            print(f'Файл {file_path} успешно удален.')
+else:
+    bot.send_message(channel, content)
+

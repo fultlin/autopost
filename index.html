@@ -4,42 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Autopost</title>
+    <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./img/kandinsky-download-1711357845552.png" type="image/x-icon">
 </head>
 
 <body>
-    <div class="hello-module visually-hidden">
-        <p>Для продолжения нажмите кнопку продолжить.</p>
-        <button class="next">Продолжить</button>
-    </div>
+    <div class="login-root">
+        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+            <div class="loginbackground box-background--white padding-top--64">
+                <div class="loginbackground-gridContainer">
+                    <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+                        <div class="box-root"
+                            style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                        </div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+                        <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;">
+                        </div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+                        <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+                        <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+                        <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;">
+                        </div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+                        <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;">
+                        </div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+                        <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+                        <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;">
+                        </div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+                        <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+                <div class="hello-module visually-hidden">
+                    <p>Для продолжения нажмите кнопку продолжить.</p>
+                    <button class="next">Продолжить</button>
+                </div>
 
-    <form action="index.php" method="post">
+                <form action="index.php" method="post" class="form" enctype="multipart/form-data">
+                    <div class="title_set">Выберите соцсеть</div>
 
-        <div>
-            <label for="name"> Выберите социальную сеть </label>
-            <select name="socset" id="socset">
-                <option value="vk">VK</option>
-                <option value="tg">TG</option>
-            </select>
-        </div>
+                    <div>
+                        <div class="tg__block">
+                            <label for="tg"> <img class="tg__img" width="40px" src="./img/telegram-svgrepo-com.svg"
+                                    alt=""> </label>
+                            <input type="checkbox" name="tg" id="tg">
+                        </div>
 
-        <div>
-            <label for="token"> Введите токен </label>
-            <input type="text" name="token" id="token">
-        </div>
-
-        <div>
-            <label for="content"> Введите текст </label>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
-        </div>
+                        <div id="tg-description" hidden>
+                            Для работы с телеграмм необходимо добавить чат бота в свой канал: <a
+                                href="https://web.telegram.org/a/#7137779818">@SendPostForChannel_bot</a>.<br />
+                            Также необходимо указать название канала:
+                            <input type="text" id="tg-channel" name="tg-channel" placeholder="@ilamnuk_test">
+                        </div>
 
 
-        <button id="back" class="back">Назад</button>
-        <button type="submit" class="send">Send</button>
-    </form>
 
-    <a href="index.php">Get_headers</a>
+                        <div class="vk__block">
+                            <label for="vk"> <img class="vk__img" src="./img/vk-1-logo-svgrepo-com.svg" width="40px"
+                                    alt=""> </label>
+                            <input type="checkbox" name="vk" id="vk">
+                        </div>
+
+
+                        <div id="vk-description" hidden>
+                            Для работы с телеграмм необходимо <a href="https://vkhost.github.io/">указать токен
+                                администратора (VK
+                                admin)</a>:
+                            <input type="text" id="access-token-vk" name="access-token-vk"></input:text>
+                            Также необходимо указать id группый с знаком минуса перед id:
+                            <input type="text" id="vk-id" name="vk-id" placeholder="-219654837">
+                        </div>
+
+                        <div class="text-image__block">
+                            <label class="content__txt" for="content"> Введите текст </label>
+                            <textarea class="content" name="content" id="content" cols="30" rows="10"></textarea>
+
+                            <label for="image" class="input-file">
+                                <input type="file" name="image" id="image">
+                                <span class="input-file-btn">Выберите файл</span>
+
+                            </label>
+                        </div>
+
+                        <button type="submit" class="send">Send</button>
+                    </div>
+                </form>
+                <script src="./main.js"></script>
 </body>
 
 </html>
